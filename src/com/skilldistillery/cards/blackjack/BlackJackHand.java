@@ -13,12 +13,12 @@ public class BlackJackHand extends AbstarctHand {
 	public void blackjackHand() {
 	}
 
-	int totalValue = 0;
 
 	@Override
 	public int getHandValue() { // value of hand
+		int totalValue = 0;
 		for (int i = 0; i < getHand().size(); i++) {
-			totalValue = getHand().get(i).getValue();
+			totalValue += getHand().get(i).getValue();
 		}
 		return totalValue;
 	}
