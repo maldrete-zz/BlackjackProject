@@ -8,6 +8,10 @@ public enum Suit {
     this.name = name;
   }
 
+  public String getSuit() {
+	  return name;
+  }
+  
   @Override
   public String toString() {
     return name;
