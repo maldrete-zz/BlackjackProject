@@ -29,8 +29,8 @@ public class Dealer {
 		return dealCard();
 	}
 	
-	public void displayHand() {
-			System.out.println(hand.getHand().get(0));		
+	public Card displayHand() {
+			return (hand.getHand().get(0));		
 		
 	}
 

@@ -20,80 +20,103 @@ public class BlackJackApp {
 		// Deals cards to start game
 		deck.createDeck();
 		System.out.println("Dealing Cards");
+		System.out.println();
 		user.getHand().addCard(deck.dealCard());
 		user.getHand().addCard(deck.dealCard());
+		// print hand
+		System.out.println(user.getName() + user.getHand() + "\tvalue: " + user.getHand().getHandValue());
 		// check for blackjack
-		checkForWinOrLose();
+		boolean check = user.getHand().isBlackjack();
+		if (check != true) {
 
-		dealer.getHand().addCard(deck.dealCard());
-		dealer.getHand().addCard(deck.dealCard());
-		// check for blackjack
-		checkForWinOrLose();
-		System.out.println();
-
-		System.out.println(user.getName() + user.getHand());
-		System.out.println();
-		System.out.println(dealer.getName() + dealer.getHand());
-
-		// check for blackjack
-		checkForWinOrLose();
-
-		// hit option
-		try {
-			int hitOption = 0;
-			do {
-
-
-			System.out.println();
-			System.out.println(user.getName() + " Would you like to hit?\n1. Yes\n2. No");
-			hitOption = kb.nextInt();
-
-			if (hitOption == 1) {
-				user.getHand().addCard(deck.dealCard());
-				System.out.println(user.getName() + user.getHand());
-				// check cards win or lose
-				checkForWinOrLose();
-				
-			}
-
-		} while (hitOption != 2);
-
-		} catch (InputMismatchException e) {
-			System.out.println("no a valid input");
-		}
-
-		System.out.println();
-		System.out.println(dealer.getName() + " turn:");
-		while (dealer.check17()) {
-			System.out.print("Dealer Hit:\t");
 			dealer.getHand().addCard(deck.dealCard());
-			System.out.println(dealer.getHand());
-		}
+			dealer.getHand().addCard(deck.dealCard());
+			System.out.println(dealer.getName() + "[" + dealer.displayHand() + ", " + "Face Down Card]");
+			// check for blackjack
+			check = dealer.getHand().isBlackjack();
+			if (check != true) {
 
-		System.out.println();
-		System.out.println("Checking for winner!");
-		if (dealer.getHand().getHandValue() == user.getHand().getHandValue()) {
-			System.out.println("Tie\tPush.....");
+				System.out.println();
 
-		}
-		if (dealer.getHand().getHandValue() > user.getHand().getHandValue()) {
-			System.out.println(dealer.getName() + " wins! with " + dealer.getHand().getHandValue() + " points");
-		}
+				// hit option
+				try {
+					int hitOption = 0;
+					do {
 
-		if (dealer.getHand().isBust()) {
-			System.out.println(user.getName() + " wins! with " + user.getHand().getHandValue() + " points");
+						System.out.println();
+						System.out.println(user.getName() + " Would you like to hit?\n1. Yes\n2. No");
+						hitOption = kb.nextInt();
 
+						if (hitOption == 1) {
+							user.getHand().addCard(deck.dealCard());
+							System.out.println(
+									user.getName() + user.getHand() + "\tvalue: " + user.getHand().getHandValue());
+							// check for bust
+							check = user.getHand().isBust();
+							if (check == true) {
+								System.out.println();
+								System.out.println(user.getName() + " " + "Bust");
+								break;
+							}
+						}
+
+					} while (hitOption != 2);
+
+				} catch (InputMismatchException e) {
+					System.out.println("not a valid input");
+				}
+
+				// do not continue if user busted
+				if (check != true) {
+
+					System.out.println();
+
+					System.out.println(dealer.getName() + " turn:");
+					System.out.println(
+							dealer.getName() + dealer.getHand() + "\tvalue: " + dealer.getHand().getHandValue());
+					while (dealer.check17()) {
+						System.out.print("Dealer Hit: ");
+						dealer.getHand().addCard(deck.dealCard());
+						System.out.println(
+								dealer.getName() + dealer.getHand() + "\tvalue: " + dealer.getHand().getHandValue());
+						// check for bust
+						check = dealer.getHand().isBust();
+						if (check == true) {
+							System.out.println(dealer.getName() + "Bust");
+							break;
+						}
+					}
+				}
+
+				while (check != true) {
+
+					System.out.println();
+
+					// System.out.println("Checking for winner!");
+
+					if (dealer.getHand().getHandValue() == user.getHand().getHandValue()) {
+						System.out.println("Tie\tPush.....");
+						check = true;
+						break;
+
+					}
+					if (dealer.getHand().getHandValue() > user.getHand().getHandValue()
+							&& (!(dealer.getHand().getHandValue() > 21))) {
+						System.out.println(
+								dealer.getName() + " wins! with " + dealer.getHand().getHandValue() + " points");
+						check = true;
+						break;
+					}
+
+					if (user.getHand().getHandValue() > dealer.getHand().getHandValue()
+							&& (!(user.getHand().getHandValue() > 21)));
+					check = true;
+					System.out.println(user.getName() + " wins! with " + user.getHand().getHandValue());
+				}
+			}
 		}
-	
 	}
 
-		
-		
-		
-		
-		
-		
-		
 	public void checkForWinOrLose() {
 		if (user.getHand().isBlackjack()) {
 			System.out.println("Blackjack! you win!");
@@ -110,6 +133,12 @@ public class BlackJackApp {
 		if (dealer.getHand().isBust()) {
 			System.out.println("Bust you loss");
 		}
+	}
+
+	public void printBothHands() {
+		System.out.println(user.getName() + user.getHand());
+		System.out.println();
+		System.out.println(dealer.getName() + dealer.getHand());
 	}
 
 }
