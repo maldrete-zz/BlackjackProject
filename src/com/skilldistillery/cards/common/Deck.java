@@ -5,13 +5,17 @@ import java.util.Collections;
 import java.util.List;
 
 public class Deck {
+	// fields
 	private List<Card> cards;
+
+	// Constructors
 	List<Card> deck = new ArrayList<>(52);
 
 	public Deck() {
 		cards = createDeck();
 	}
 
+	// Methods
 	public List<Card> createDeck() {
 
 		for (Suit s : Suit.values()) {
@@ -33,12 +37,6 @@ public class Deck {
 
 	public Card dealCard() {
 		return cards.remove(0);
-	}
-
-	public static void main(String[] args) {
-		Deck deck = new Deck();
-		deck.createDeck();
-		System.out.println(deck.dealCard());
 	}
 
 }

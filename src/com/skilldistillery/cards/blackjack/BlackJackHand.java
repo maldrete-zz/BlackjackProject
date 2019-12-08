@@ -10,10 +10,13 @@ import com.skilldistillery.cards.common.User;
 
 public class BlackJackHand extends AbstarctHand {
 
+	// Fields
+
+	// Constructors
 	public void blackjackHand() {
 	}
 
-
+	// Methods
 	@Override
 	public int getHandValue() { // value of hand
 		int totalValue = 0;

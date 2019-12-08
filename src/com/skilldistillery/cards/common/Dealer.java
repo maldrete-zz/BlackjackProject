@@ -1,39 +1,40 @@
 package com.skilldistillery.cards.common;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.skilldistillery.cards.blackjack.BlackJackHand;
 
 public class Dealer {
+	// Fields
 	private String name;
+
+	// Constructors
 	private BlackJackHand hand = new BlackJackHand();
-	
+
 	public Dealer(String name) {
 		super();
 		this.name = name;
 	}
-	
+
+	// Methods
 	public boolean check17() {
 		boolean check = true;
-		if(hand.getHandValue() < 17) {
+		if (hand.getHandValue() < 17) {
 			check = true;
 		} else {
 			check = false;
 		}
 		return check;
 	}
-	
 
-	public Card dealCard() { 									// get one card
+	public Card dealCard() {
 		return dealCard();
 	}
-	
+
 	public Card displayHand() {
-			return (hand.getHand().get(0));		
-		
+		return (hand.getHand().get(0));
+
 	}
 
+	// Getters and Setters
 	public String getName() {
 		return name;
 	}
@@ -50,5 +51,4 @@ public class Dealer {
 		this.hand = hand;
 	}
 
-	
 }

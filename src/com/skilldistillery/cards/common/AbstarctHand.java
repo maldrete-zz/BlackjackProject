@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class AbstarctHand {
-	
+	// Fields
 	public abstract int getHandValue();
-	
-	
+
+	// Constructors
 	private List<Card> cards = new ArrayList<>();
-	
-	
+
+	// Getters and Setters
 	public List<Card> getCards() {
 		return cards;
 	}
@@ -22,19 +22,18 @@ public abstract class AbstarctHand {
 	public void addCard(Card card) {
 		cards.add(card);
 	}
-	
+
 	public void clearHand() {
 		cards.clear();
 	}
-	
+
 	public List<Card> getHand() {
 		return cards;
 	}
-	
-	  @Override
-	  public String toString() {
-		  return getCards().toString();
-	  }
-	
-	
+
+	@Override
+	public String toString() {
+		return getCards().toString();
+	}
+
 }

@@ -27,6 +27,9 @@ public class BlackJackApp {
 		System.out.println(user.getName() + user.getHand() + "\tvalue: " + user.getHand().getHandValue());
 		// check for blackjack
 		boolean check = user.getHand().isBlackjack();
+		if(check == true) {
+			System.out.println(user.getName() + "got Blackjack!");
+		}
 		if (check != true) {
 
 			dealer.getHand().addCard(deck.dealCard());
@@ -34,6 +37,9 @@ public class BlackJackApp {
 			System.out.println(dealer.getName() + "[" + dealer.displayHand() + ", " + "Face Down Card]");
 			// check for blackjack
 			check = dealer.getHand().isBlackjack();
+			if(check == true) {
+				System.out.println(dealer.getName() + "got BlackJack");
+			}
 			if (check != true) {
 
 				System.out.println();
@@ -82,6 +88,7 @@ public class BlackJackApp {
 						// check for bust
 						check = dealer.getHand().isBust();
 						if (check == true) {
+							System.out.println();
 							System.out.println(dealer.getName() + "Bust");
 							break;
 						}
