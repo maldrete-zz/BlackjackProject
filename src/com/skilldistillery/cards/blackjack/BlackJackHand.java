@@ -1,12 +1,6 @@
 package com.skilldistillery.cards.blackjack;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.skilldistillery.cards.common.AbstarctHand;
-import com.skilldistillery.cards.common.Card;
-import com.skilldistillery.cards.common.Deck;
-import com.skilldistillery.cards.common.User;
 
 public class BlackJackHand extends AbstarctHand {
 
