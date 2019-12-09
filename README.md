@@ -7,7 +7,6 @@ This program models the card game blackjack.
 Rules: https://en.wikipedia.org/wiki/Blackjack
 
 
-## How to play
 
 ## Technologies Used
 Building classes in an Object-oriented manner, abstraction, polymorphism, inheritance, encapsulation. Used lists, constructors, for and while loops, if statements, and try catch blocks.
