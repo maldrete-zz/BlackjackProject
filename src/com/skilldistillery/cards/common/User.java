@@ -30,5 +30,7 @@ public class User {
 	public void setHand(BlackJackHand hand) {
 		this.hand = hand;
 	}
+	
+	
 
 }
